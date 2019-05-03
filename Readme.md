@@ -1,6 +1,7 @@
 # Project Description
 
 Project Geelman is a personal webpage template. It supports bootstrap 4.1.0 components and fully responsive. There is a content management interface using CKEditor.
+
 There is no need to set up an application server or database server. It has been developed using PlayFramework 1.2.5 and uses H2 file database.
 
 You can see the template on live in these web pages;
@@ -19,15 +20,25 @@ Prerequisites: JDK1.7.x, PlayFramework1.2.5
 # First Deployment
 
 The project has a secret hardcoded superadmin user. In CacheHelper.checkSuperAdminExists() method you need to change username "superadmin" and password "supersecret" to your desired way. This user is not configurable any other way, to protect the freelancer developer from customer related issues.
+
 You can build and run the project at your local computer and create an h2 DB file. Then you can upload it to the production server.
+
 If you don't want to use H2 file DB you can configure it to use remote MySQL DB too, using the conf/application.conf file. You just need to change the JDBC URL
+
 Download and open PlayFramework1.2.5 distribution.
+
 Set play run mode either as "dev" or "geelman" for development and for production respectively by using the command "play id"
+
 After you set to the desired mode, start the project by using "play run <projectfolderadress>"
+
 In dev mode HTTP port is 9000 and in geelman mode 80
+
 When the project is fully built and up, superadmin must connect and create the admin.
+
 Then Admin (the customer or webmaster) can add, update, view or delete as much as webpages as he/she wants.
+
 PageLogo and Favicon are under ./<projectfolder>/public/images as logo.png favicon.png you can change them anytime you want. If the project is on production already, you need to restart the app
+
 
 
 # Notes
