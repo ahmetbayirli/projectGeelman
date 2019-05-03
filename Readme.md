@@ -21,9 +21,9 @@ Prerequisites: JDK1.7.x, PlayFramework1.2.5
 
 The project has a secret hardcoded superadmin user. In CacheHelper.checkSuperAdminExists() method you need to change username "superadmin" and password "supersecret" to your desired way. This user is not configurable any other way, to protect the freelancer developer from customer related issues.
 
-You can build and run the project at your local computer and create an h2 DB file. Then you can upload it to the production server.
+You can build and run the project at your local computer and create an H2 DB file. Then you can upload it to the production server.
 
-If you don't want to use H2 file DB you can configure it to use remote MySQL DB too, using the conf/application.conf file. You just need to change the JDBC URL
+If you don't want to use H2 file database you can configure it to use remote MySQL DB too, using the conf/application.conf file. You just need to change the JDBC URL
 
 Download and open PlayFramework1.2.5 distribution.
 
@@ -49,10 +49,8 @@ PageLogo and Favicon are under ./<projectfolder>/public/images as logo.png favic
 * http://server:port/admincontroller/index for administration
 * If an admin tries the wrong password 3 times then he/she is blocked and you(superadmin) need to reset the cache
 * Just outside of the project folder, there will be automatically created folders.
-  ./data
-    - *.db files for db
-  ./data/attachments
-    - uuid files for images.
+  - ./data/ *.db files for db
+  - ./data/attachments/uuid files for images.
 
 * You can crontab and backup ./data folder to dropbox periodically. To return from the backup simply copy and past *.db files and attachments to necessary folders.
 * To optimize the DB size, you can re-use same images in different pages by noting the id of the image.
