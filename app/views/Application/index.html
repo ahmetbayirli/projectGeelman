@@ -1,0 +1,86 @@
+#{extends 'main.html' /}
+
+<script>
+    $("body").css({"background-image":"url('/public/images/background"+(Math.floor(Math.random() * 4)+4)+".jpg')"});
+</script>
+<body>
+
+<div class="container">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg rounded mb-4 navbar-default">
+        <div class="container">
+            <a class="navbar-brand" style="line-height: 1.2; ! important; font-size: 14px; !important " href="@{Application.index()}"><img class="logomain" src="/public/images/logo.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+                <ul class="nav navbar-nav mr-auto">
+                    #{list webPageList, as:'menuItem'}
+                        #{if !menuItem_isFirst}
+                            #{if menuItem.childList.size()>0}
+                                #{navbarDropDown menuItem:menuItem/}
+                            #{/if}
+                            #{else }
+                            <li class="nav-item"><a class="nav-link pagelink" id="page_${menuItem.id}" href="@{Application.index(menuItem.title)}"> ${menuItem.title} </a></li>
+                            #{/else}
+                        #{/if}
+
+                    #{/list}
+                </ul>
+                <!-- Right nav -->
+                <ul class="nav navbar-nav">
+                    <!--<li class="nav-item"><a class="nav-link" id="page_admin" href="@{AdminController.index()}" >Yönetim</a></li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="pageContent" class="jumbotron">${webPage?.content.raw()}
+    </div>
+
+</div>
+<!--container-->
+</body>
+<script type="text/javascript">
+
+    <!--$(".navbar-fixed-top").autoHidingNavbar();-->
+
+    <!--$('#pageContent').css("margin-top", (parseInt($('.navbar').height()) + 10) + "px");-->
+
+    $(document).on('click touchend', '.pagelink', function (e) {
+        e.preventDefault();
+
+        var pageId = $(this).attr('id').split("_")[1];
+        var pageName =  $(this).text();
+
+        $.post('@{Application.pageLoad()}', {pageId: pageId}, function (content) {
+            $('#pageContent').html(content);
+
+            <!--gtag('config', 'GOOGLEPROVIDEDID', {-->
+                  <!--'page_title' : pageName,-->
+                  <!--'page_path': '/?pageName=' + pageName-->
+                <!--});-->
+        });
+        if($('.navbar-toggler').css('display') != 'none')
+        {
+          $('.navbar-toggler').click();
+        }
+
+    });
+
+
+
+
+</script>
+<style>
+    .pagelink {
+    touch-action: none;
+    }
+    .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+</style>

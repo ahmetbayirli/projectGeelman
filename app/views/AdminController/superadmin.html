@@ -1,0 +1,33 @@
+#{extends 'main.html' /}
+<div class="jumbotron">
+    <div class="container">
+        <p style="font-size: 30px; color: #ff331f;"><strong>Geelman SuperAdmin</strong></p>
+    </div>
+</div>
+<div class="container">
+    <div class="content" style="margin-bottom: 10px;">
+        <a class="btn btn-success" href="/">Return to WebSiteView</a>
+    </div>
+
+
+    <div id="sayfaListesi"><h3>User List</h3>
+
+        <ul>
+            #{list userList, as:'user'}
+            <li style="padding: 2px;">
+                <a class="btn btn-danger"
+                   href="@{AdminController.openUser(user.id)}">${user.toString()}</a>
+
+            </li>
+            #{/list}
+        </ul>
+        <a class="pageDeleteLink btn btn-danger" href="@{AdminController.openUser(null)}">New User</a>
+
+    </div>
+</div>
+<style>
+    body
+    {
+    background-image: unset !important;
+    }
+</style>

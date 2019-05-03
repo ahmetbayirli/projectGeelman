@@ -1,0 +1,16 @@
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" id="page_${_menuItem.id}" href="@{Application.index(_menuItem.title)}" >${_menuItem.title}</a>
+    <ul class="dropdown-menu">
+    #{list _menuItem.childList, as:'childMenuItem'}
+        #{if childMenuItem.childList.size()>0}
+
+            #{navbarDropDown menuItem:childMenuItem/}
+
+        #{/if}
+        #{else }
+            <li><a class="dropdown-item pagelink" id="page_${childMenuItem.id}" href="@{Application.index(childMenuItem.title)}"> ${childMenuItem.title} </a></li>
+        #{/else}
+    #{/list}
+
+    </ul>
+</li>

@@ -1,0 +1,34 @@
+#{extends 'main.html' /}
+#{form @AdminController.login()}
+<div class="jumbotron">
+    <div class="container">
+        <p style="font-size: 30px; color: #ff331f;"><strong>Geelman Administration</strong></p>
+    </div>
+</div>
+<div class="container">
+    <div class="message-box" ${flash.error || flash.success ? '' : 'style=display:none'}>
+        #{if flash.error}
+            <div class="error-box"><strong>Error: </strong>${flash.error}</div>
+        #{/if}
+        #{elseif flash.success}
+            <div class="info-box"><strong>Success: </strong>${flash.success}</div>
+        #{/elseif}
+    </div>
+    #{if loginOk}
+    <div class="form-group">
+        <label for="kullaniciAdiInput" style="width: 10%">User Name</label>
+        <input type="text" required="required" placeholder="Kullanıcı Adı" value="${user?.userName}"  name="user.userName" class="form-control"  id="kullaniciAdiInput" style="width: 30%; display: inline-block">
+    </div>
+    <div class="form-group">
+        <label for="sifreInput" style="width: 10%">Password</label>
+        <input type="password" required="required" placeholder="Şifre"  value="${user?.password}" name="user.password" class="form-control"  id="sifreInput" style="width: 30%; display: inline-block">
+    </div>
+    <input type="submit" class="btn btn-danger" value="Enter" style="width: 10%">
+    #{/if}
+
+
+</div>
+#{/form}
+<script type="text/javascript">
+
+</script>

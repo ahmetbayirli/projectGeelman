@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+#{set title: play.Play.configuration.getProperty("title") /}
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta charset="${_response_encoding}">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="description" content="SEOCONTENT">
+        <meta name="keywords" content="SEOCONTENT">
+        <meta name="author" content="SEOCONTENT">
+        <meta name="designer" content="Ph.D. Ahmet BAYIRLI">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"  href="@{'/public/stylesheets/main.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/bootstrap-4.1.0/dist/css/bootstrap.min.css'}">
+        <!--<link rel="stylesheet" media="screen" href="@{'/public/bootstrap-4.1.0/dist/css/navbar-custom_blue_black.css'}">-->
+        <!--<link rel="stylesheet" media="screen" href="@{'/public/bootstrap-4.1.0/dist/css/navbar-custom_gray_blue.css'}">-->
+        <!--<link rel="stylesheet" media="screen" href="@{'/public/bootstrap-4.1.0/dist/css/navbar-custom_black_blue.css'}">-->
+        <link rel="stylesheet" media="screen" href="@{'/public/bootstrap-4.1.0/dist/css/navbar-custom_black_water.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/smartmenus-1.1.0/css/sm-core-css.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/smartmenus-1.1.0/addons/bootstrap-4/jquery.smartmenus.bootstrap-4.css'}">
+
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        <!--<link rel="icon" type="image/png" sizes="32x32" href="@{'/public/images/favicon-32x32.png'}">-->
+
+
+        <script src="@{'/public/javascripts/jquery-1.11.3.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/jquery.confirm.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/bootstrap-4.1.0/dist/js/bootstrap.min.js'}" type="text/javascript" ></script>
+        <script src="@{'/public/bootstrap-4.1.0/dist/js/jquery.bootstrap-autohidingnavbar.min.js'}" type="text/javascript" ></script>
+        <script src="@{'/public/ckeditor/ckeditor.js'}"></script>
+        <script src="@{'/public/smartmenus-1.1.0/jquery.smartmenus.min.js'}" type="text/javascript"></script>
+        <script src="@{'/public/smartmenus-1.1.0/addons/bootstrap-4/jquery.smartmenus.bootstrap-4.min.js'}" type="text/javascript"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129778520-1"></script>-->
+        <!--<script>-->
+          <!--window.dataLayer = window.dataLayer || [];-->
+          <!--function gtag(){dataLayer.push(arguments);}-->
+          <!--gtag('js', new Date());-->
+
+          <!--gtag('config', 'GOOGLEPROVIDEDID');-->
+        <!--</script>-->
+
+
+
+    </head>
+    <body>
+        #{doLayout /}
+    </body>
+</html>

@@ -1,0 +1,16 @@
+<li>
+    <a id="page_${_menuItem.id}" href="@{Application.index(_menuItem.title)}" >${_menuItem.title}  <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+    #{list _menuItem.childList, as:'childMenuItem'}
+        #{if childMenuItem.childList.size()>0}
+
+            #{navbarDropDown menuItem:childMenuItem/}
+
+        #{/if}
+        #{else }
+            <li><a class="pageLink" id="page_${childMenuItem.id}" href="@{Application.index(childMenuItem.title)}"> ${childMenuItem.title} </a></li>
+        #{/else}
+    #{/list}
+
+    </ul>
+</li>

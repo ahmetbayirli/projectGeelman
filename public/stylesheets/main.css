@@ -1,0 +1,109 @@
+.message-box {
+    color: black;
+    text-align: center;
+    margin: 0 15px 15px 15px;
+}
+
+.error-box {
+    background-color: #fddfde;
+    border: 1px solid #fbc7c6;
+    padding: 14px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    color: #3843d2;
+}
+
+.info-box {
+    background-color: #ddf4fb;
+    border: 1px solid #c6edf9;
+    padding: 14px;
+    border-radius: 5px;
+    color: #5f9ea0;
+}
+
+#wrapper, #loginform {
+    margin:0 auto;
+    padding-bottom:25px;
+    background:#EBF4FB;
+    width:504px;
+    border:1px solid #ACD8F0; }
+
+#loginform { padding-top:18px; }
+
+    #loginform p { margin: 5px; }
+
+#submit { width: 60px; }
+
+.error { color: #ff0000; }
+
+#menu { padding:12.5px 25px 12.5px 25px; }
+
+.welcome { float:left; }
+
+.logout { float:right; }
+
+.msgln { margin:0 0 2px 0; }
+
+.navbar {
+    min-height: 70px !important;
+    font-size: 16px !important;
+}
+
+.jumbotron img
+{
+ width: 100% !important;
+}
+
+.logomain
+{
+    width: 200px;
+}
+
+body
+{
+
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+@media (max-width:767px){
+    body
+    {
+        height: 100vh;
+    }
+
+    .condJustify
+    {
+    text-align: left !important;
+    }
+    .logomain
+    {
+        width: 150px;
+    }
+
+}
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+    /* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
+.jumbotron
+{
+opacity: 1;
+background-color: #f8f9f9d9 !important;
+
+}
+

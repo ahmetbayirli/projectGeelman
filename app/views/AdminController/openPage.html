@@ -1,0 +1,113 @@
+#{extends 'main.html' /}
+#{form @AdminController.savePage()}
+<div class="jumbotron">
+    <div class="container">
+        <p style="font-size: 30px; color: #ff331f;"><strong>Geelman Page Crud</strong></p>
+    </div>
+</div>
+<div class="container">
+    <div class="content" style="margin-bottom: 10px;">
+        <a class="btn btn-warning" href="@{AdminController.openPage(null,null,null)}">New Page</a>
+        <a class="btn btn-success" href="/">Return to WebsiteView</a>
+        <a class="btn btn-success" href="@{AdminController.index()}">Return to Administration</a>
+        <input type="submit" class="btn btn-danger" value="SAVE">
+    </div>
+    <div class="content" id="instructionsButton"> <span class="btn btn-info">Instructions</span>
+
+    </div>
+    <div class="content">
+        <ul>
+            <li>
+                Press to "Instructions" to hide this.
+            </li>
+            <li>
+                Give a number to the page. Give 1 for main page.
+            </li>
+            <li>
+                Give a title to the page. This will be visible on the website's menu.
+            </li>
+            <li>
+                If this page is a child of another page, select it.
+            </li>
+            <li>
+                Don't forget to save the page!!!
+            </li>
+            <li class="alert-danger">
+                Press to "New Page" to add a page.
+            </li>
+            <li>
+                To update a page, press on the title of relevant page.
+            </li>
+            <li>
+                Press to "Return to WebsiteView" to see the live version of your website.
+            </li>
+        </ul>
+    </div>
+
+        <div class="message-box" ${flash.error || flash.success ? '' : 'style=display:none'}>
+            #{if flash.error}
+                <div class="error-box"><strong>Error: </strong>${flash.error}</div>
+            #{/if}
+            #{elseif flash.success}
+                <div class="info-box"><strong>Success: </strong>${flash.success}</div>
+            #{/elseif}
+        </div>
+
+    <div id="pageEdit"><h3>Edit Page</h3>
+
+    </div>
+
+        <div class="form-group">
+            <label for="pageNumberInput">Page Number</label>
+            <input type="hidden" value="${webPage?.id}" name="webPage.id">
+            <input type="number"  min="1" required  value="${webPage?.pageNumber}" name="webPage.pageNumber"class="form-control"
+                   id="pageNumberInput" style="width: 10%; display: inline-block">
+        </div>
+        <div class="form-group">
+            <label for="pageTitleInput">Parent</label>
+            #{select 'webPage.parent.id', items:parentList, valueProperty:'id', labelProperty:'title', value:webPage?.parent?.id }
+                #{option null}Select#{/option}
+            #{/select}
+        </div>
+        <div class="form-group">
+            <label for="pageTitleInput">Page Title</label>
+            <input type="text" required="required" placeholder="My new page" value="${webPage?.title}" name="webPage.title" class="form-control"  id="pageTitleInput" style="width: 30%; display: inline-block">
+        </div>
+
+
+        <div class="form-group">
+            <textarea class="ckeditor" name="pageContent" rows="10" cols="100">${webPage?webPage.content:''}</textarea>
+        </div>
+
+
+
+
+    </div>
+#{/form}
+
+    <script type="text/javascript">
+
+        $("#instructionsButton").click(function () {
+
+            $header = $(this);
+            //getting the next element
+            $content = $header.next();
+            //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+            $content.slideToggle(200, function () {
+                //execute this after slideToggle is done
+                //change text of header based on visibility of content div
+//            $header.text(function () {
+//                //change text based on condition
+//                return $content.is(":visible") ? "Açıklamaları Kapat" : "Açıklamaları Oku";
+//            });
+            });
+
+        });
+    </script>
+
+<style>
+    body
+    {
+    background-image: unset !important;
+    }
+</style>
