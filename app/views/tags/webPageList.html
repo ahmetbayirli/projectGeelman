@@ -1,7 +1,7 @@
 <ul>
 #{list _webPageList, as:'webPage'}
     <li>
-        <a class="btn btn-lg" href="@{AdminController.openPage(webPage.id,null,null)}"> ${webPage.toString()} </a>
+        <a class="btn btn-lg" href="@{AdminController.openPage(webPage.id,null,null)}" data-toggle="tooltip" title="Edit this page"> ${webPage.toString()} </a>
         <a class="pageDeleteLink btn btn-danger" href="@{AdminController.deletePage(webPage.id)}">Delete</a>
         
 

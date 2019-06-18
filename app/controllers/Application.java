@@ -1,11 +1,16 @@
 package controllers;
 
+import models.EntryKeyword;
 import models.WebPage;
 import org.apache.commons.lang.StringUtils;
 import play.mvc.Controller;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Application extends Controller {
 
@@ -41,5 +46,4 @@ public class Application extends Controller {
         System.err.println(new Timestamp(System.currentTimeMillis()) + "  ip: "+ request.remoteAddress+" has opened "+ webPage.title);
         renderHtml(content);
     }
-
 }

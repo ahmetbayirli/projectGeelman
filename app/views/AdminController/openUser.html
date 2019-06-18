@@ -1,10 +1,6 @@
 #{extends 'main.html' /}
-#{form @AdminController.saveKullanici()}
-<div class="jumbotron">
-    <div class="container">
-        <p style="font-size: 30px; color: #ff331f;"><strong>Geelman User CRUD</strong></p>
-    </div>
-</div>
+#{form @AdminController.saveUser()}
+#{adminHeader title:'User CRUD'/}
 <div class="container">
 
         <div class="form-group">

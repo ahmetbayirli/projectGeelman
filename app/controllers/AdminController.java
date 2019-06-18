@@ -2,6 +2,7 @@ package controllers;
 
 import helpers.CacheHelper;
 import models.Content;
+import models.EntryKeyword;
 import models.User;
 import models.WebPage;
 import play.mvc.Before;
@@ -28,7 +29,8 @@ public class AdminController extends Controller {
     public static void index() {
 //        List<WebPage> webPageList = createDummyPage();
         List<WebPage> webPageList = WebPage.getParentList();
-        render(webPageList);
+        List<EntryKeyword> entryKeywordList = EntryKeyword.findAll();
+        render(webPageList,entryKeywordList);
     }
 
     private static List<WebPage> createDummyPage() {

@@ -1,0 +1,104 @@
+#{extends 'main.html' /}
+#{form @EntryController.saveEntry(), enctype:'multipart/form-data'}
+#{adminHeader title:'Entry Details'/}
+<div class="container">
+    <div class="content" style="margin-bottom: 20px;">
+        <div class="message-box" ${flash.error || flash.success ? '' : 'style=display:none'}>
+            #{if flash.error}
+            <div class="error-box"><strong>Error: </strong>${flash.error}</div>
+            #{/if}
+            #{elseif flash.success}
+            <div class="info-box"><strong>Success: </strong>${flash.success}</div>
+            #{/elseif}
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <input type="hidden" value="${entryKeyword.id}" name="entry.entryKeyword.id">
+        <input type="hidden" value="${entry?.id}" name="entry.id">
+        <label class="formLabel">Keyword: ${entryKeyword?.keyword}</label>
+    </div>
+    <div class="row">
+        <div class="col-md-2" style="margin-right:-50px;"> <label class="formLabel" for="orderNoInput">Entry Order</label>
+        </div>
+        <div class="col-md-10">
+            <input type="number" required value="${entry?.orderNo}" name="entry.orderNo" class="form-control" placeholder="Give a number for ordering!" id="orderNoInput">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2" style="margin-right:-50px;"> <label class="formLabel" for="titleInput">Entry Title</label>
+        </div>
+        <div class="col-md-10">
+            <input type="text" value="${entry?.title}" name="entry.title" class="form-control" placeholder="Type your entry title here!" id="titleInput">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 rowSeparator" style="margin-right:-50px;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2" style="margin-right:-50px;"> <label class="formLabel" >Entry Content</label>
+        </div>
+        <div class="col-md-10">
+            <textarea name="entry.content" class="form-control"
+                      id="contentInput" rows="5" placeholder="Type your entry content here!"
+                      required >${entry?.content}</textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 rowSeparator" style="margin-right:-50px;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2" style="margin-right:-50px;"> <label class="formLabel" >Entry Image</label>
+        </div>
+        <div class="col-md-1">
+            <input id="fileInput" name="imageFile" type="file" accept="image/*" style="display: none" onchange="$('#fileName').text($(this).val())" />
+
+            <input class="btn btn-info" type="button" value="Browse" onclick="$('#fileInput').click()">
+
+        </div>
+        <div class="col-md-3">
+            <label class="tipLabel" id="fileName"> Select and image if entry has one</label>
+        </div>
+        <div class="col-md-6">
+            #{if entry?.image?.id}
+            <div class="formImageThumbnail">
+                <img src="@{ImageController.renderImage(entry.image.id)}" alt="" style="width: 100%;" border="1px">
+            </div>
+            #{/if}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 rowSeparator" style="margin-right:-50px;">
+        </div>
+    </div>
+    <div class="content" style="margin-bottom: 20px;">
+
+        <input type="submit" class="btn btn-danger" value="SAVE">
+        <label class="tipLabel"> Don't forget to save the entry!!!</label>
+    </div>
+    <div class="content" style="margin-bottom: 20px;">
+        <a class="btn btn-warning" href="@{EntryController.openEntry(entryKeyword.id,null,null,null)}">Create Another Entry</a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Other Entries Under Same EntryKeyword</h3>
+            #{entryList entryList:neighbourEntryList /}
+        </div>
+    </div>
+</div>
+
+
+#{/form}
+
+
+<style>
+    body
+    {
+    background-image: unset !important;
+    }
+</style>

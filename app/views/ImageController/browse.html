@@ -27,9 +27,9 @@
     #{form @saveImageAction(), enctype:'multipart/form-data', style:"margin: 10px 0;", id:"dialogForm" }
         <input type="hidden" name="CKEditorFuncNum" value="${CKEditorFuncNum}">
         <input id="fileInput" name="imageFile" type="file" accept="image/*" style="display: none" />
-        <input class="btn btn-info" type="button" value="Göz At" onclick="$('#fileInput').click()">
-        <input type="button" class="btn btn-success" ${imageId ? '' : 'disabled'} onclick="closeWindow()" value="Tamam">
-        <a class="btn btn-info" onclick="window.close()">Kapat</a>
+        <input class="btn btn-info" type="button" value="Browse" onclick="$('#fileInput').click()">
+        <input type="button" class="btn btn-success" ${imageId ? '' : 'disabled'} onclick="closeWindow()" value="OK">
+        <a class="btn btn-info" onclick="window.close()">Close</a>
     #{/form}
 </div>
 <div align="center">

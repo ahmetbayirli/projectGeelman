@@ -1,11 +1,15 @@
 package models;
 
 import helpers.CacheHelper;
+import net.sf.ehcache.config.ConfigurationHelper;
 import play.Play;
 import play.db.jpa.Model;
 
 import javax.persistence.*;
+import javax.security.auth.login.Configuration;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by ahmet.bayirli on 19.8.2015.
@@ -45,7 +49,7 @@ public class WebPage extends Model
         return "Page No: " + pageNumber + ", Page Title: " + title;
     }
 
-    public String getContent()
+    public String getRawContent()
     {
         String pageContent = "";
 
@@ -63,6 +67,40 @@ public class WebPage extends Model
             pageContent += content.content;
         }
         return pageContent;
+    }
+
+    public String getContent()
+    {
+        String pageContent = "";
+        pageContent = getRawContent();
+        pageContent =  replaceEntryLists(pageContent);
+        return pageContent;
+    }
+
+
+    private static String replaceEntryLists(String content)
+    {
+        String entrylistTagBegin = Play.configuration.getProperty("entrylist.begin");
+        String entrylistTagEnd = Play.configuration.getProperty("entrylist.end");
+        final Pattern pattern = Pattern.compile(entrylistTagBegin +"(.+?)" + entrylistTagEnd, Pattern.DOTALL);
+//        final Matcher matcher = pattern.matcher("<tag>String I want to extract</tag>");
+        while(content.contains(entrylistTagBegin)&&content.contains(entrylistTagEnd))
+        {
+            List<String> entryKeywords = getEntryKeywords(pattern.matcher(content));
+            for (String keyword : entryKeywords) {
+                EntryKeyword entryKeyword = EntryKeyword.findByKeyword(keyword);
+                content = content.replace(entrylistTagBegin+keyword+entrylistTagEnd, entryKeyword.getHTML() );
+            }
+        }
+        return content;
+    }
+
+    private static List<String> getEntryKeywords(final Matcher matcher) {
+        final List<String> entryKeywords = new ArrayList<String>();
+        while (matcher.find()) {
+            entryKeywords.add(matcher.group(1));
+        }
+        return entryKeywords;
     }
 
     public void deleteOldContent()

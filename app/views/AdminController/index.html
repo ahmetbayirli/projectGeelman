@@ -1,61 +1,44 @@
 #{extends 'main.html' /}
-<div class="jumbotron">
-    <div class="container">
-        <p style="font-size: 30px; color: #ff331f;"><strong>Geelman Administration</strong></p>
-    </div>
-</div>
+#{adminHeader title:'Administration'/}
 <div class="container">
-    <div class="content" style="margin-bottom: 10px;">
-        <a class="btn btn-warning" href="@{AdminController.openPage(null,null,null)}">New Page</a>
-        <a class="btn btn-success" href="/">Return to WebsiteView</a>
-    </div>
-    <div class="content" id="instructionsButton"><span class="btn btn-info">Instructions</span>
-
-    </div>
     <div class="content">
-        <ul>
-            <li>
-                Press to "Instructions" to hide this.
-            </li>
-            <li>
-                Press to "New Page" to add a page.
-            </li>
-            <li>
-                To update a page, press on the title of relevant page.
-            </li>
-            <li>
-                Press to "Return to WebsiteView" to see the live version of your website.
-            </li>
-        </ul>
-    </div>
+        <div class="row">
+            <div class="col-md-2">
+                <h3 id="sayfaListesi">Page List</h3>
+            </div>
+            <div class="col-md-2">
+                <a class="btn btn-warning" href="@{AdminController.openPage(null,null,null)}" data-toggle="tooltip" title="Create New Page">Add New Page</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                #{webPageList webPageList:webPageList /}
+            </div>
+        </div>
 
-    <div id="sayfaListesi"><h3>Page List</h3>
+        <div class="row">
+            <div class="col-md-12">
+                <div style="border:solid 1px; margin-bottom:20px;"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <h3 id="entryListesi">Entry Keyword List</h3>
+            </div>
+            <div class="col-md-3">
+                <a class="btn btn-warning" href="@{EntryController.openEntryKeyword(null,null,null)}" data-toggle="tooltip" title="Add New EntryKeyword and Entries in it.">Add New Entry Keyword</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                #{entryKeywordList entryKeywordList:entryKeywordList /}
+            </div>
+        </div>
 
-    </div>
-    <div class="content">
-    #{webPageList webPageList:webPageList /}
     </div>
 
 </div>
 <script type="text/javascript">
-
-    $("#instructionsButton").click(function () {
-
-        $header = $(this);
-        //getting the next element
-        $content = $header.next();
-        //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
-        $content.slideToggle(200, function () {
-            //execute this after slideToggle is done
-            //change text of header based on visibility of content div
-//            $header.text(function () {
-//                //change text based on condition
-//                return $content.is(":visible") ? "Açıklamaları Kapat" : "Açıklamaları Oku";
-//            });
-        });
-
-    });
-
     $(document).ready(function () {
 
         $('.pageDeleteLink').confirm({

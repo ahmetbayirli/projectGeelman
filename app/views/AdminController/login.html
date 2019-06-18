@@ -1,10 +1,6 @@
 #{extends 'main.html' /}
 #{form @AdminController.login()}
-<div class="jumbotron">
-    <div class="container">
-        <p style="font-size: 30px; color: #ff331f;"><strong>Geelman Administration</strong></p>
-    </div>
-</div>
+#{adminHeader title:'Admin Login'/}
 <div class="container">
     <div class="message-box" ${flash.error || flash.success ? '' : 'style=display:none'}>
         #{if flash.error}

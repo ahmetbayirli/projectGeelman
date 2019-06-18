@@ -1,0 +1,7 @@
+<ul>
+#{list _entryList, as:'entry'}
+    <li>
+        <a class="btn btn-lg" href="@{EntryController.openEntry(entry.entryKeyword.id,entry.id,null,null)}" data-toggle="tooltip" title="Edit this Entry"> ${entry.toString()} </a>
+    </li>
+#{/list}
+</ul>

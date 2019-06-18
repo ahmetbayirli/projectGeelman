@@ -59,6 +59,56 @@
     width: 200px;
 }
 
+.adminheader
+{
+background-color: black;
+border: 1px solid;
+border-radius: .25rem;
+margin-bottom: 20px;
+margin-top: 5px;
+padding-top: 10px;
+}
+
+.adminNavigationIcon
+{
+    height: 50px;
+    border: solid 2px;
+    border-radius: 30px;
+    border-color: white;
+}
+
+.formLabel
+{
+    font-weight: bold;
+}
+.rowSeparator
+{
+border: solid 0.1px;
+margin-top: 2px;
+margin-bottom: 2px;
+border-color: white;
+}
+.formImageThumbnail
+{
+    padding: 6px;
+    background-color: #e9ecef;
+    border: solid 0.1px #e9ecef;
+    border-radius: 5px;
+}
+.tipLabel
+{
+    font-size:10px;
+}
+.infoRow
+{
+    border-bottom: dashed #d3d3d354;
+    margin-bottom: 8px;
+}
+.card img
+{
+  padding: 5px;
+  margin-top: 0px !important;
+}
 body
 {
 
