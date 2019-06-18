@@ -64,11 +64,17 @@ PageLogo and Favicon are under ./<projectfolder>/public/images as logo.png favic
 # New Features 18.6.2019
 
 Administration screens are refactored for a better UX
+
 Entry and EntryKeyword options has been added. Users with lack of HTML knowledge may use these options for list of repeating entries.
+
 User is needed to determine a keyword and a style for the list.
+
 Then he/she may add entries to that list.
+
 Entry list must be added to the page content with entrylist:keyword:entrylist tag
+
 Every list is shown according to the style; paragraph, accordion, tabbed
+
 Entry lists can be inserted on each other, like list1:accordion in a list2:tabbed list. You need to add the entrylist:keyword:entrylist tag as an entry content of one of the entries of parent list. !!!Recursion is not prevented.
 
 
