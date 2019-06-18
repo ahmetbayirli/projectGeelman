@@ -5,7 +5,7 @@ Project Geelman is a personal webpage template. It supports bootstrap 4.1.0 comp
 There is no need to set up an application server or database server. It has been developed using PlayFramework 1.2.5 and uses H2 file database.
 
 You can see the template on live in these web pages;
-* http://www.drozgurkarakoyun.com
+* http://www.ardenarastirma.com/
 
 Keywords: Personal web page, java, responsive, content management (CM)
 
@@ -60,3 +60,15 @@ PageLogo and Favicon are under ./<projectfolder>/public/images as logo.png favic
 
 * The user (admin) is needed to know HTML in basic level. There is CKEditor in CM interface and most of the time you need to use the Source option in order to be able to successfully add bootstrap components.
 * Once you save the page and come back for an update, you will see that all of the indentations in HTML source is lost. You need to reserve your page's inner HTML in a different location/notepad for future uses.
+
+# New Features 18.6.2019
+
+Administration screens are refactored for a better UX
+Entry and EntryKeyword options has been added. Users with lack of HTML knowledge may use these options for list of repeating entries.
+User is needed to determine a keyword and a style for the list.
+Then he/she may add entries to that list.
+Entry list must be added to the page content with entrylist:keyword:entrylist tag
+Every list is shown according to the style; paragraph, accordion, tabbed
+Entry lists can be inserted on each other, like list1:accordion in a list2:tabbed list. You need to add the entrylist:keyword:entrylist tag as an entry content of one of the entries of parent list. !!!Recursion is not prevented.
+
+
